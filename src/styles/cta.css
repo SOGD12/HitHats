@@ -28,6 +28,7 @@
 }
 .cta-line--fg { color: var(--fg); }
 .cta-line--muted { color: var(--muted); }
+/* .cta-line--accent { color: var(--accent); font-size: clamp(5rem, 18vw, 16rem); } */
 .cta-line--accent { color: var(--accent); font-size: clamp(5rem, 18vw, 16rem); }
 .cta-sub {
   font-family: var(--font-body);

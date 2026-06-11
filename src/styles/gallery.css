@@ -24,14 +24,6 @@
   margin: 0 auto;
   height: 100vh;
 }
-@media (max-width: 768px) {
-  .gallery-reverse-inner {
-    grid-template-columns: 1fr;
-    height: auto;
-    gap: 0.75rem;
-    padding: 0 1.25rem;
-  }
-}
 .gallery-col {
   display: flex;
   flex-direction: column;
@@ -40,9 +32,6 @@
 }
 .gallery-col--reverse {
   flex-direction: column-reverse;
-}
-@media (max-width: 768px) {
-  .gallery-col--reverse { display: none; }
 }
 .gallery-item {
   position: relative;

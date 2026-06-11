@@ -38,10 +38,13 @@ export default function App() {
     tl.from('nav', { y: -40, opacity: 0, duration: 0.7, ease: 'power3.out' })
       .from('.hero-badge', { y: 20, opacity: 0, duration: 0.5 }, '-=0.3')
 
+    const splits = []
+
     const heroLines = document.querySelectorAll('.hero-line-text')
     if (heroLines.length) {
       heroLines.forEach((el) => {
         const split = new SplitText(el, { type: 'chars' })
+        splits.push(split)
         tl.from(split.chars, {
           y: isMobile ? 60 : 100,
           opacity: 0,
@@ -60,6 +63,7 @@ export default function App() {
     // — Monolog-style word reveal titles —
     document.querySelectorAll('.reveal-title').forEach((el) => {
       const split = new SplitText(el, { type: 'lines,words' })
+      splits.push(split)
       gsap.fromTo(split.words,
         { y: isMobile ? 40 : 80, opacity: 0 },
         {
@@ -122,7 +126,48 @@ export default function App() {
       }
     }
 
-    // — Process scroll-driven steps — (handled by IntersectionObserver in Process.jsx)
+    // — Mobile process cascade reveal (GSAP replaces IntersectionObserver) —
+    if (isMobile) {
+      const processSteps = gsap.utils.toArray('.process-step')
+      if (processSteps.length) {
+        processSteps.forEach((step) => {
+          const num = step.querySelector('.process-step-num')
+          const content = step.querySelector('.process-step-content')
+          gsap.fromTo(step,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1, y: 0,
+              scrollTrigger: { trigger: step, start: 'top 85%', end: 'top 30%', scrub: 1 },
+            }
+          )
+          if (num) {
+            gsap.fromTo(num,
+              { scale: 0.6 },
+              {
+                scale: 1,
+                scrollTrigger: { trigger: step, start: 'top 85%', end: 'top 30%', scrub: 1 },
+              }
+            )
+          }
+          if (content) {
+            gsap.fromTo(content,
+              { y: 30, opacity: 0 },
+              {
+                y: 0, opacity: 1,
+                scrollTrigger: { trigger: step, start: 'top 85%', end: 'top 30%', scrub: 1 },
+              }
+            )
+          }
+        })
+        gsap.fromTo('.process-progress-bar',
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            scrollTrigger: { trigger: '.process-sticky-wrap', start: 'top top', end: 'bottom bottom', scrub: 1 },
+          }
+        )
+      }
+    }
 
     // — CTA kinetic lines —
     gsap.fromTo('.cta-line',
@@ -157,6 +202,9 @@ export default function App() {
     ScrollTrigger.refresh()
 
     return () => {
+      tl.kill()
+      splits.forEach(s => s.revert())
+      gsap.set('nav, .hero-badge, .hero-stats span, .hero-sub', { clearProps: 'opacity,transform' })
       lenis.destroy()
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }

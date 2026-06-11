@@ -20,19 +20,3 @@
   background: var(--accent);
   border-radius: 50%;
 }
-
-@media (max-width: 480px) {
-  .hero { padding-top: 6rem; }
-  .hero-stats { flex-wrap: wrap; }
-  .hero-stats span { padding: 0.3rem 0.8rem; border: none; }
-  .products { padding: 4rem 1.25rem; }
-  .statement { padding: 6rem 1.25rem; }
-  .philosophy { padding: 4rem 1.25rem; }
-  .testimonials { padding: 4rem 1.25rem; }
-  .gallery-intro { padding: 4rem 1.25rem 2rem; }
-  .process-intro { padding: 4rem 1.25rem 2rem; }
-  .cta { padding: 3rem 1.25rem; }
-  .footer { padding: 3rem 1.25rem 1.5rem; }
-  .cta-btn { padding: 14px 32px; font-size: 1rem; }
-  .hero-collection-num { display: none; }
-}

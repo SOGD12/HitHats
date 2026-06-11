@@ -32,6 +32,9 @@ export default function Process() {
   const imgsRef = useRef([])
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768
+    if (isMobile) return
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

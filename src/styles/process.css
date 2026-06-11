@@ -106,22 +106,3 @@
   color: var(--muted);
   max-width: 400px;
 }
-@media (max-width: 768px) {
-  .process-sticky-wrap {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0 1.5rem;
-  }
-  .process-image {
-    height: 40vh;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-  .process-step {
-    min-height: 45vh;
-  }
-  .process-step-num {
-    font-size: 5rem;
-  }
-}

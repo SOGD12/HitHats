@@ -6,8 +6,16 @@ export default function Marquee() {
       <div className="marquee-row marquee-row--left">
         <span>{text}</span>
         <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
       </div>
       <div className="marquee-row marquee-row--right">
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
         <span>{text}</span>
         <span>{text}</span>
       </div>

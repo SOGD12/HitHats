@@ -23,10 +23,10 @@
   display: inline-block;
   padding-right: 0;
 }
-.marquee-row--left span {
+.marquee-row--left {
   animation: marqueeLeft 30s linear infinite;
 }
-.marquee-row--right span {
+.marquee-row--right {
   animation: marqueeRight 30s linear infinite;
 }
 @keyframes marqueeLeft {

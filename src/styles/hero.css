@@ -8,7 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8rem 2rem 3rem;
+  /* padding: 8rem 2rem 3rem; */
+  padding: 5rem 2rem 3rem; 
   overflow: hidden;
 }
 .hero-badge {
@@ -24,6 +25,8 @@
   font-weight: 300;
   width: fit-content;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 .hero-title {
   position: relative;
@@ -38,35 +41,25 @@
   display: inline-block;
   text-wrap: balance;
 }
-@media (min-width: 1024px) {
-  .hero-line-text { font-size: clamp(5rem, 14vw, 16rem); }
-}
 .hero-line-accent {
   color: var(--accent);
   font-style: italic;
 }
-.hero-line-sub {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: clamp(1rem, 2.5vw, 1.8rem);
-  color: var(--muted);
-  display: inline-block;
-}
 .hero-sub {
   font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   line-height: 1.65;
-  color: var(--muted);
-  max-width: 380px;
-  margin-top: 2rem;
+  color: var(--fg);
+  max-width: 420px;
+  margin-top: 2.5rem;
   position: relative;
   z-index: 2;
 }
 .hero-stats {
   display: flex;
   gap: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(242, 240, 236, 0.25);
   padding-top: 1.2rem;
   margin-top: auto;
   position: relative;
@@ -74,35 +67,33 @@
   flex-wrap: wrap;
 }
 .hero-stats span {
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-  font-weight: 300;
-  padding: 0.4rem 1.2rem;
-  border-right: 1px solid var(--border);
+  letter-spacing: 0.14em;
+  color: var(--fg);
+  font-weight: 500;
+  padding: 0.5rem 1.4rem;
+  border-right: 1px solid rgba(242, 240, 236, 0.25);
 }
 .hero-stats span:first-child { padding-left: 0; }
 .hero-stats span:last-child { border-right: none; padding-right: 0; }
-@media (max-width: 480px) {
-  .hero-stats span { border: none; padding: 0.3rem 0.8rem; }
-}
 
 .hero-img-wrapper {
   position: absolute;
-  right: -5%;
-  top: 15%;
-  width: 38vw;
-  max-width: 420px;
+  right: 5%;
+  top: 12%;
+  width: 40vw;
+  max-width: 480px;
   aspect-ratio: 3/4;
   z-index: 0;
   overflow: hidden;
 }
 @media (max-width: 768px) {
   .hero-img-wrapper {
-    width: 55vw;
-    top: 20%;
     right: -8%;
+    top: 20%;
+    width: 55vw;
+    max-width: 420px;
     opacity: 0.4;
   }
 }
