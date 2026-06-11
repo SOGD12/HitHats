@@ -1,0 +1,45 @@
+/* ═══════════════════════════════════
+   STATEMENT
+   ═══════════════════════════════════ */
+
+.statement {
+  background: var(--accent);
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.statement-corner {
+  position: absolute;
+  font-size: 1.5rem;
+  color: rgba(242, 240, 236, 0.2);
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+.statement-corner--tl { top: 1.5rem; left: 1.5rem; }
+.statement-corner--tr { top: 1.5rem; right: 1.5rem; }
+.statement-corner--bl { bottom: 1.5rem; left: 1.5rem; }
+.statement-corner--br { bottom: 1.5rem; right: 1.5rem; }
+.statement-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.statement-line {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 14vw, 12rem);
+  line-height: 0.88;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  display: block;
+}
+.statement-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: rgba(242, 240, 236, 0.7);
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  line-height: 1.65;
+}

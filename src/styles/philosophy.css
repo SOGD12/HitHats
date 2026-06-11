@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════
+   PHILOSOPHY (ACCORDION)
+   ═══════════════════════════════════ */
+
+.philosophy {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.philosophy-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.philo-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.philo-item:hover { border-color: rgba(242, 240, 236, 0.25); }
+.philo-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--border);
+  line-height: 1;
+  min-width: 60px;
+  transition: color 0.3s;
+}
+.philo-item-open .philo-num { color: var(--accent); }
+.philo-content { flex: 1; }
+.philo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.philo-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+}
+.philo-icon {
+  font-size: 1.5rem;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+.philo-item-open .philo-icon { color: var(--accent); }
+.philo-text-wrapper {
+  overflow: hidden;
+  height: 0;
+}
+.philo-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  padding-top: 0.8rem;
+}
