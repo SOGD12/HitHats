@@ -3,7 +3,7 @@ import gsap from 'gsap'
 
 const links = ['Gorras', 'Sacos', 'Colección', 'Nosotros', 'Contacto']
 
-export default function Nav() {
+export default function Nav({ onSideOpen }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const overlayRef = useRef(null)
@@ -38,9 +38,12 @@ export default function Nav() {
           </a>
 
           <div className="nav-links">
-            {links.slice(0, 4).map(l => (
-              <a key={l} href="#" className="nav-link">{l}</a>
-            ))}
+            <a href="#" className="nav-link">Gorras</a>
+            <a href="#" className="nav-link">Sacos</a>
+            <a href="#" className="nav-link">Colección</a>
+            <button className="nav-link nav-link--panel" onClick={onSideOpen}>
+              Nosotros <span className="nav-link-arrow">*</span>
+            </button>
           </div>
 
           <button className="nav-menu-btn" onClick={() => setOpen(!open)}>
@@ -59,13 +62,18 @@ export default function Nav() {
             {links.map((l, i) => (
               <a
                 key={l}
-                href="#"
+                href={l === 'Nosotros' ? undefined : '#'}
                 className="nav-overlay-link"
                 ref={(el) => (linkRefs.current[i] = el)}
-                onClick={() => setOpen(false)}
+                onClick={l === 'Nosotros' ? () => { setOpen(false); onSideOpen() } : () => setOpen(false)}
+                role={l === 'Nosotros' ? 'button' : undefined}
               >
                 <span className="nav-overlay-link-text">{l}</span>
-                <span className="nav-overlay-link-arrow">→</span>
+                {l === 'Nosotros' ? (
+                  <span className="nav-overlay-link-arrow">↗</span>
+                ) : (
+                  <span className="nav-overlay-link-arrow">→</span>
+                )}
               </a>
             ))}
           </div>

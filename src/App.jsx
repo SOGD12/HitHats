@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitText from 'gsap/SplitText'
@@ -15,12 +15,15 @@ import Gallery from './components/Gallery'
 import Process from './components/Process'
 import Cta from './components/Cta'
 import Footer from './components/Footer'
+import SidePanel from './components/SidePanel'
 
 import './App.css'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
 export default function App() {
+  const [sidePanelOpen, setSidePanelOpen] = useState(false)
+  const lenisRef = useRef(null)
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -30,6 +33,7 @@ export default function App() {
     lenis.on('scroll', ScrollTrigger.update)
     gsap.ticker.add((time) => lenis.raf(time * 1000))
     gsap.ticker.lagSmoothing(0)
+    lenisRef.current = lenis
 
     const isMobile = window.innerWidth < 768
 
@@ -210,9 +214,19 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!lenisRef.current) return
+    if (sidePanelOpen) {
+      lenisRef.current.stop()
+    } else {
+      lenisRef.current.start()
+    }
+  }, [sidePanelOpen])
+
   return (
     <div className="app">
-      <Nav />
+      <Nav onSideOpen={() => setSidePanelOpen(true)} />
+      <SidePanel isOpen={sidePanelOpen} onClose={() => setSidePanelOpen(false)} />
       <Hero />
       <Marquee />
       <Products />
